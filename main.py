@@ -160,7 +160,8 @@ def main(uu, pwd):
         "apptoken": token["app_token"],
     }
     url0 = f"https://api-mifit-cn.huami.com/v1/data/band_data.json?&t={timestamp}"
-    data0 = f"userid={token["user_id"]}&last_sync_data_time={seconds}&device_type=0&last_deviceid={deviceID}&data_json={dataJSON}"
+    userId=token["user_id"]
+    data0 = f"userid={userId}&last_sync_data_time={seconds}&device_type=0&last_deviceid={deviceID}&data_json={dataJSON}"
     res0 = requests.post(url0, data=data0, headers=headers0)
 
     res0 = res0.json()
