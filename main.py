@@ -126,12 +126,13 @@ class MiMotionRunner:
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_7_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2",
             "X-Forwarded-For": self.fake_ip_addr
         }
-        data1 = {
-            "client_id": "HuaMi",
-            "password": f"{self.password}",
-            "redirect_uri": "https://s3-us-west-2.amazonaws.com/hm-registration/successsignin.html",
-            "token": "access"
-        }
+        #data1 = {
+         #   "client_id": "HuaMi",
+         #   "password": f"{self.password}",
+          #  "redirect_uri": "https://s3-us-west-2.amazonaws.com/hm-registration/successsignin.html",
+         #   "token": "access"
+        #}
+        data1 = f"client_id=HuaMi&country_code=CN&json_response=true&name={self.user}&password={self.password}&redirect_uri=https://s3-us-west-2.amazonaws.com/hm-registration/successsignin.html&state=REDIRECTION&token=access"
         r1 = requests.post(url1, data=data1, headers=login_headers, allow_redirects=False)
         if r1.status_code != 303:
             self.log_str += "登录异常，status: %d\n" % r1.status_code
